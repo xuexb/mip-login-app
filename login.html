@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html mip>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <title>登录</title>
+    <link rel="stylesheet" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="canonical" href="https://static.xuexb.com/mip-login-app/login.html">
+    <noscript>
+        <style mip-officialrelease>
+            body {
+                -webkit-animation: none;
+                   -moz-animation: none;
+                    -ms-animation: none;
+                        animation: none;
+            }
+        </style>
+    </noscript>
+</head>
+<body>
+    <h1>登录 - MIP 登录示例</h1>
+    <mip-xuexb-login data-url="https://static.xuexb.com/mip-login-app/api/login.json">
+        <mip-form url="https://static.xuexb.com/mip-login-app/api/login.json">
+            <ul>
+                <li>
+                    <label for="username">用户名：</label>
+                    <input type="text" name="username" required>
+                </li>
+                <li>
+                    <label for="password">密码：</label>
+                    <input type="password" name="password" required>
+                </li>
+                <li>
+                    <button type="submit">
+                        提交
+                    </button>
+                </li>
+            </ul>
+        </mip-form>
+    </mip-xuexb-login>
+    <script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+    <script src="https://c.mipcdn.com/static/v1/mip-form/mip-form.js"></script>
+    <script src="https://c.mipcdn.com/extensions/platform/v1/mip-xuexb-login/mip-xuexb-login.js"></script>
+</body>
+</html>

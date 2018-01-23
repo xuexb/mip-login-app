@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html mip>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <title>点赞</title>
+    <link rel="stylesheet" href="https://c.mipcdn.com/static/v1/mip.css">
+    <link rel="canonical" href="https://static.xuexb.com/mip-login-app">
+    <noscript>
+        <style mip-officialrelease>
+            body {
+                -webkit-animation: none;
+                   -moz-animation: none;
+                    -ms-animation: none;
+                        animation: none;
+            }
+        </style>
+    </noscript>
+</head>
+<body>
+    <h1>登录 - MIP 登录示例</h1>
+    <mip-xuexb-like
+        data-login-url="login.html"
+        data-get-url="https://static.xuexb.com/mip-login-app/api/get.like.json?id=1"
+        data-set-url="https://static.xuexb.com/mip-login-app/api/set.like.json?id=1">
+        赞
+        <span show-count>loading...</span>
+    </mip-xuexb-like>
+    <script src="https://c.mipcdn.com/static/v1/mip.js"></script>
+    <script src="https://c.mipcdn.com/extensions/platform/v1/mip-xuexb-like/mip-xuexb-like.js"></script>
+</body>
+</html>
