@@ -1,0 +1,30 @@
+{
+  "name": "mip-login-app",
+  "version": "1.0.0",
+  "description": "MIP 登录示例，包括登录表单、点赞、验证码等交互功能",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuexb/mip-login-app.git"
+  },
+  "keywords": [
+    "MIP",
+    "登录示例"
+  ],
+  "author": "xuexb <fe.xiaowu@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xuexb/mip-login-app/issues"
+  },
+  "homepage": "https://github.com/xuexb/mip-login-app#readme",
+  "dependencies": {
+    "koa": "^2.4.1",
+    "koa-mount": "^3.0.0",
+    "koa-router": "^7.3.0",
+    "koa-session2": "^2.2.5",
+    "koa-static": "^4.0.2"
+  }
+}
