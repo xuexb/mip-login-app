@@ -4,10 +4,11 @@
  */
 
 const Koa = require('koa');
-const Router = require('koa-router');
 const session = require('koa-session2');
 const serve = require('koa-static');
 const mount = require('koa-mount');
+const KeyCache = require('key-cache');
+const cache = new KeyCache();
 const app = new Koa();
 
 // 注入 session
@@ -37,14 +38,12 @@ app.use(async (ctx, next) => {
     await next();
 });
 
-// 注入使用 cookie 来记录赞数
+// 注入使用本地文件缓存来记录赞数
 app.use(async (ctx, next) => {
-    const like = ctx.cookies.get('like');
+    const like = cache.get('like');
 
-    if (!like) {
-        ctx.cookies.set('like', '0', {
-            expires: new Date('2020-01-01')
-        });
+    if (!like && like !== 0) {
+        cache.set('like', 0);
     }
 
     await next();
@@ -68,14 +67,12 @@ app.use(mount('/mip-login-app/api/get.like.json', async ctx => {
         });
     }
 
-    console.log(ctx.header);
-
     return ctx.jsonp({
         status: 0,
         data: {
-            like: parseInt(ctx.cookies.get('like'), 10),
+            like: cache.get('like'),
             isLogin: !!ctx.session.user,
-            isLike: !!ctx.session.user && !!ctx.cookies.get(`isLike@${ctx.session.user.username}`)
+            isLike: !!ctx.session.user && !!cache.get(`isLike@${ctx.session.user.username}`)
         }
     });
 }));
@@ -96,13 +93,11 @@ app.use(mount('/mip-login-app/api/set.like.json', async ctx => {
     }
 
     // 点赞+1
-    let like = ctx.cookies.get('like') - 0;
-    if (!ctx.cookies.get(`isLike@${ctx.session.user.username}`)) {
+    let like = cache.get('like');
+    if (!cache.get(`isLike@${ctx.session.user.username}`)) {
         like += 1;
-        ctx.cookies.set('like', like, {
-            expires: new Date('2020-01-01')
-        });
-        ctx.cookies.set(`isLike@${ctx.session.user.username}`, '1');
+        cache.set('like', like);
+        cache.set(`isLike@${ctx.session.user.username}`, 1);
     }
 
     ctx.jsonp({
