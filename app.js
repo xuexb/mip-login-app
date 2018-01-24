@@ -53,8 +53,13 @@ app.use(async (ctx, next) => {
 app.use(mount('/mip-login-app/api', async (ctx, next) => {
     ctx.set('Content-Type', 'application/json; charset=utf-8');
     ctx.set('Cache-Control', 'no-cache,no-store');
-    ctx.set('Access-Control-Allow-Credentials', true);
-    ctx.set('Access-Control-Allow-Origin', ctx.header.origin || '*');
+
+    // 非 jsonp 配置 CORS
+    if (!ctx.query.callback) {
+        ctx.set('Access-Control-Allow-Credentials', true);
+        ctx.set('Access-Control-Allow-Origin', ctx.header.origin || '*');
+    }
+
     await next();
 }));
 
