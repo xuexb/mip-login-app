@@ -49,6 +49,8 @@
     <ul>
         <li>未登录状态下点击选会跳转到登录页，登录成功会返回当前页面。
         <li>已登录状态下点击赞会判断是否赞过，没有则可以+1</li>
+        <li>点赞的数据存放在服务端的缓存中</li>
+        <li>每个用户名只能点一次赞</li>
     </ul>
     <div class="wrap">
         <mip-xuexb-like
@@ -59,6 +61,7 @@
             赞
             <span show-count>loading...</span>
         </mip-xuexb-like>
+        <a href="https://static.xuexb.com/mip-login-app/api/exit.json" class="like">退出</a>
     </div>
     <ul>
         <li>
