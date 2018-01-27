@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <title>点赞</title>
+    <title>MIP 交互组件示例</title>
     <link rel="stylesheet" href="https://c.mipcdn.com/static/v1/mip.css">
     <link rel="canonical" href="https://static.xuexb.com/mip-login-app">
     <style>
@@ -32,6 +32,20 @@
         a {
             text-decoration: underline;
         }
+
+        .love span {
+            display: none;
+        }
+        .love[is-like="false"] .no,
+        .love .no {
+            display: inline;
+        }
+        .love[is-like="true"] .no {
+            display: none;
+        }
+        .love[is-like="true"] .ok {
+            display: inline;
+        }
     </style>
     <noscript>
         <style mip-officialrelease>
@@ -45,20 +59,37 @@
     </noscript>
 </head>
 <body>
-    <h1>点赞 - MIP 登录示例</h1>
+    <h1>MIP 交互组件示例</h1>
     <ul>
         <li>未登录状态下点击选会跳转到登录页，登录成功会返回当前页面。
         <li>已登录状态下点击赞会判断是否赞过，没有则可以+1</li>
         <li>点赞的数据存放在服务端的缓存中</li>
         <li>每个用户名只能点一次赞</li>
+        <li>每个用户只能喜欢一次</li>
+        <li>访问量每次刷新都会+1</li>
     </ul>
     <div class="wrap">
         <mip-xuexb-like
             class="like"
-            data-login-url="login.html?r=8"
+            data-login-url="login.html?r=10"
             data-get-url="https://static.xuexb.com/mip-login-app/api/get.like.json?id=1"
             data-set-url="https://static.xuexb.com/mip-login-app/api/set.like.json?id=1">
             赞
+            <span show-count>loading...</span>
+        </mip-xuexb-like>
+        <mip-xuexb-like
+            class="like love"
+            data-login-url="login.html?r=10"
+            data-get-url="https://static.xuexb.com/mip-login-app/api/get.love.json?id=1"
+            data-set-url="https://static.xuexb.com/mip-login-app/api/set.love.json?id=1">
+            <span class="no">喜欢</span>
+            <span class="ok">已喜欢</span>
+        </mip-xuexb-like>
+        <mip-xuexb-like
+            class="like"
+            data-login-url="login.html?r=10"
+            data-get-url="https://static.xuexb.com/mip-login-app/api/get.count.json?id=1">
+            <span>当前访问量：</span>
             <span show-count>loading...</span>
         </mip-xuexb-like>
         <a href="https://static.xuexb.com/mip-login-app/api/exit.json" class="like">退出</a>
@@ -68,7 +99,7 @@
             源站链接： <a href="https://static.xuexb.com/mip-login-app/">https://static.xuexb.com/mip-login-app/</a>
         </li>
         <li>
-            MIP-Cache 链接： <a href="http://static-xuexb-com.mipcdn.com/c/s/static.xuexb.com/mip-login-app/?r=8">http://static-xuexb-com.mipcdn.com/c/s/static.xuexb.com/mip-login-app/</a>
+            MIP-Cache 链接： <a href="http://static-xuexb-com.mipcdn.com/c/s/static.xuexb.com/mip-login-app/?r=10">http://static-xuexb-com.mipcdn.com/c/s/static.xuexb.com/mip-login-app/</a>
         </li>
     </ul>
     <script src="https://c.mipcdn.com/static/v1/mip.js"></script>

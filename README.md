@@ -1,6 +1,6 @@
 # mip-login-app
 
-MIP 登录示例，包括登录表单、点赞、验证码等交互功能，示例地址： <https://static.xuexb.com/mip-login-app/> 。
+MIP 登录示例，包括登录表单、点赞、喜欢、访问量、验证码等交互功能，示例地址： <https://static.xuexb.com/mip-login-app/> 。
 
 ![node version required](https://img.shields.io/badge/node-%3E=7.8.0-red.svg)
 [![MIP徽章](https://img.shields.io/badge/Powered%20by-MIP-brightgreen.svg)](https://www.mipengine.org)
@@ -25,6 +25,9 @@ $ npm start
 - [获取用户信息](#userinfo)
 - [获取文章赞数](#getlike)
 - [文章点赞](#setlike)
+- [获取是否喜欢](#getlove)
+- [设置喜欢](#setlove)
+- [查看阅读数](#getcount)
 
 ### 说明
 
@@ -215,6 +218,109 @@ id | 模拟文章ID，非空即可
 }
 ```
 
+<a id="getlove"></a>
+### 6. 获取是否喜欢
+
+#### 接口地址
+
+<https://static.xuexb.com/mip-login-app/api/get.love.json>
+
+#### 请求参数
+
+参数名 | 说明
+--- | ---
+id | 模拟文章ID，非空即可
+
+#### 返回值
+
+未登录：
+```json
+{
+    "status": 0,
+    "data": {
+        "isLogin": false,
+        "isLike": false
+    }
+}
+```
+
+已登录未喜欢：
+```json
+{
+    "status": 0,
+    "data": {
+        "isLogin": true,
+        "isLike": false
+    }
+}
+```
+
+已登录已喜欢：
+```json
+{
+    "status": 0,
+    "data": {
+        "isLogin": true,
+        "isLike": true
+    }
+}
+```
+
+<a id="setlove"></a>
+### 7. 设置喜欢
+
+#### 接口地址
+
+<https://static.xuexb.com/mip-login-app/api/set.love.json>
+
+#### 请求参数
+
+参数名 | 说明
+--- | ---
+id | 模拟文章ID，非空即可
+
+#### 返回值
+
+未登录：
+```json
+{
+    "status": 3,
+    "msg": "未登录"
+}
+```
+
+已登录（已点赞和未点赞返回一致）：
+```json
+{
+    "status": 0,
+    "data": {
+    }
+}
+```
+
+<a id="getcount"></a>
+### 8. 查看阅读数
+
+#### 接口地址
+
+<https://static.xuexb.com/mip-login-app/api/get.count.json>
+
+#### 请求参数
+
+参数名 | 说明
+--- | ---
+id | 模拟文章ID，非空即可
+
+#### 返回值
+
+```json
+{
+    "status": 0,
+    "data": {
+        "like": 1
+    }
+}
+```
 
 ## License
 

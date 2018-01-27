@@ -46,6 +46,10 @@ app.use(async (ctx, next) => {
         cache.set('like', 0);
     }
 
+    if (!cache.get('count')) {
+        cache.set('count', 0);
+    }
+
     await next();
 });
 
@@ -62,6 +66,72 @@ app.use(mount('/mip-login-app/api', async (ctx, next) => {
 
     await next();
 }));
+
+// 获取文章阅读数
+app.use(mount('/mip-login-app/api/get.count.json', async ctx => {
+    if (!ctx.query.id) {
+        return ctx.jsonp({
+            status: 1,
+            msg: 'id 为空'
+        });
+    }
+
+    // 点击数+1
+    cache.set('count', cache.get('count') + 1);
+
+    return ctx.jsonp({
+        status: 0,
+        data: {
+            like: cache.get('count')
+        }
+    });
+}));
+
+// 获取是否喜欢接口
+app.use(mount('/mip-login-app/api/get.love.json', async ctx => {
+    if (!ctx.query.id) {
+        return ctx.jsonp({
+            status: 1,
+            msg: 'id 为空'
+        });
+    }
+
+    return ctx.jsonp({
+        status: 0,
+        data: {
+            isLogin: !!ctx.session.user,
+            isLike: !!ctx.session.user && !!cache.get(`isLove@${ctx.session.user.username}`)
+        }
+    });
+}));
+
+// 设置喜欢接口
+app.use(mount('/mip-login-app/api/set.love.json', async ctx => {
+    if (!ctx.query.id) {
+        return ctx.jsonp({
+            status: 1,
+            msg: 'id 为空'
+        });
+    }
+    else if (!ctx.session.user) {
+        return ctx.jsonp({
+            status: 3,
+            msg: '未登录'
+        });
+    }
+
+    // 点赞+1
+    if (!cache.get(`isLove@${ctx.session.user.username}`)) {
+        cache.set(`isLove@${ctx.session.user.username}`, 1);
+    }
+
+    ctx.jsonp({
+        status: 0,
+        data: {
+        }
+    });
+}));
+
 
 // 获取点赞接口
 app.use(mount('/mip-login-app/api/get.like.json', async ctx => {
