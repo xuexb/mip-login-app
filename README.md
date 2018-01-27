@@ -1,6 +1,6 @@
 # mip-login-app
 
-MIP 登录示例，包括登录表单、点赞、喜欢、访问量、验证码等交互功能，示例地址： <https://static.xuexb.com/mip-login-app/> 。
+MIP 交互组件示例，包括登录表单、点赞、喜欢、访问量、验证码等交互功能，示例地址： <https://static.xuexb.com/mip-login-app/> 。
 
 ![node version required](https://img.shields.io/badge/node-%3E=7.8.0-red.svg)
 [![MIP徽章](https://img.shields.io/badge/Powered%20by-MIP-brightgreen.svg)](https://www.mipengine.org)
