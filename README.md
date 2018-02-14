@@ -322,6 +322,43 @@ id | 模拟文章ID，非空即可
 }
 ```
 
+## 数据库
+
+### 用户表 - user
+
+字段名 | 类型 | 说明
+--- | --- | ---
+id | `int` | ID
+username | `varchar` | 用户名
+password | `varchar` | 密码
+
+### 授权表 - oauth
+
+字段名 | 类型 | 说明
+--- | --- | ---
+id | `int` | ID
+type | `char` | 类型，有 qq、github、weibo
+token | `varchar` | 授权码
+info | `varchar` | 其他信息，JSON 形式
+user_id | `int` | 用户ID
+
+### 文章表 - article
+
+字段名 | 类型 | 说明
+--- | --- | ---
+id | `int` | ID
+title | `varchar` | 文章标题
+content | `text` | 文章内容
+view | `bigint` | 文章阅读数
+
+### 文章点赞表 - article_like
+
+字段名 | 类型 | 说明
+--- | --- | ---
+id | `int` | ID
+article_id | `id` | 文章ID
+user_id | `int` | 用户ID
+
 ## License
 
 MIT
