@@ -1,6 +1,6 @@
 # mip-login-app
 
-MIP 交互组件示例，包括登录表单、点赞、喜欢、访问量、验证码等交互功能，示例地址： <https://static.xuexb.com/mip-login-app/> 。
+MIP 交互组件示例，包括登录表单、点赞、喜欢、访问量、验证码等交互功能，示例地址： <https://login.mip.xuexb.com/> 。
 
 ![node version required](https://img.shields.io/badge/node-%3E=7.8.0-red.svg)
 [![MIP徽章](https://img.shields.io/badge/Powered%20by-MIP-brightgreen.svg)](https://www.mipengine.org)
@@ -53,7 +53,7 @@ $ npm start
 
 #### 接口地址
 
-<https://static.xuexb.com/mip-login-app/api/login.json>
+<https://login.mip.xuexb.com/api/login.json>
 
 #### 请求参数
 
@@ -96,7 +96,7 @@ password | 密码，密码同用户名一致时登录成功
 
 #### 接口地址
 
-<https://static.xuexb.com/mip-login-app/api/exit.json>
+<https://login.mip.xuexb.com/api/exit.json>
 
 #### 返回值
 
@@ -111,7 +111,7 @@ password | 密码，密码同用户名一致时登录成功
 
 #### 接口地址
 
-<https://static.xuexb.com/mip-login-app/api/userinfo.json>
+<https://login.mip.xuexb.com/api/userinfo.json>
 
 #### 返回值
 
@@ -139,7 +139,7 @@ password | 密码，密码同用户名一致时登录成功
 
 #### 接口地址
 
-<https://static.xuexb.com/mip-login-app/api/get.like.json>
+<https://login.mip.xuexb.com/api/get.like.json>
 
 #### 请求参数
 
@@ -190,7 +190,7 @@ id | 模拟文章ID，非空即可
 
 #### 接口地址
 
-<https://static.xuexb.com/mip-login-app/api/set.like.json>
+<https://login.mip.xuexb.com/api/set.like.json>
 
 #### 请求参数
 
@@ -223,7 +223,7 @@ id | 模拟文章ID，非空即可
 
 #### 接口地址
 
-<https://static.xuexb.com/mip-login-app/api/get.love.json>
+<https://login.mip.xuexb.com/api/get.love.json>
 
 #### 请求参数
 
@@ -271,7 +271,7 @@ id | 模拟文章ID，非空即可
 
 #### 接口地址
 
-<https://static.xuexb.com/mip-login-app/api/set.love.json>
+<https://login.mip.xuexb.com/api/set.love.json>
 
 #### 请求参数
 
@@ -303,7 +303,7 @@ id | 模拟文章ID，非空即可
 
 #### 接口地址
 
-<https://static.xuexb.com/mip-login-app/api/get.count.json>
+<https://login.mip.xuexb.com/api/get.count.json>
 
 #### 请求参数
 
@@ -321,6 +321,10 @@ id | 模拟文章ID，非空即可
     }
 }
 ```
+
+## Nginx 配置
+
+<https://github.com/xuexb/nginx-conf/blob/master/conf/xuexb/login.mip.xuexb.com.conf>
 
 ## License
 

@@ -54,7 +54,7 @@ app.use(async (ctx, next) => {
 });
 
 // 注入异步接口添加跨域和不缓存
-app.use(mount('/mip-login-app/api', async (ctx, next) => {
+app.use(mount('/api', async (ctx, next) => {
     ctx.set('Content-Type', 'application/json; charset=utf-8');
     ctx.set('Cache-Control', 'no-cache,no-store');
 
@@ -68,7 +68,7 @@ app.use(mount('/mip-login-app/api', async (ctx, next) => {
 }));
 
 // 获取文章阅读数
-app.use(mount('/mip-login-app/api/get.count.json', async ctx => {
+app.use(mount('/api/get.count.json', async ctx => {
     if (!ctx.query.id) {
         return ctx.jsonp({
             status: 1,
@@ -88,7 +88,7 @@ app.use(mount('/mip-login-app/api/get.count.json', async ctx => {
 }));
 
 // 获取是否喜欢接口
-app.use(mount('/mip-login-app/api/get.love.json', async ctx => {
+app.use(mount('/api/get.love.json', async ctx => {
     if (!ctx.query.id) {
         return ctx.jsonp({
             status: 1,
@@ -106,7 +106,7 @@ app.use(mount('/mip-login-app/api/get.love.json', async ctx => {
 }));
 
 // 设置喜欢接口
-app.use(mount('/mip-login-app/api/set.love.json', async ctx => {
+app.use(mount('/api/set.love.json', async ctx => {
     if (!ctx.query.id) {
         return ctx.jsonp({
             status: 1,
@@ -134,7 +134,7 @@ app.use(mount('/mip-login-app/api/set.love.json', async ctx => {
 
 
 // 获取点赞接口
-app.use(mount('/mip-login-app/api/get.like.json', async ctx => {
+app.use(mount('/api/get.like.json', async ctx => {
     if (!ctx.query.id) {
         return ctx.jsonp({
             status: 1,
@@ -153,7 +153,7 @@ app.use(mount('/mip-login-app/api/get.like.json', async ctx => {
 }));
 
 // 点赞
-app.use(mount('/mip-login-app/api/set.like.json', async ctx => {
+app.use(mount('/api/set.like.json', async ctx => {
     if (!ctx.query.id) {
         return ctx.jsonp({
             status: 1,
@@ -184,7 +184,7 @@ app.use(mount('/mip-login-app/api/set.like.json', async ctx => {
 }));
 
 // 获取用户信息
-app.use(mount('/mip-login-app/api/userinfo.json', async ctx => {
+app.use(mount('/api/userinfo.json', async ctx => {
     ctx.jsonp({
         status: 0,
         data: ctx.session.user
@@ -192,7 +192,7 @@ app.use(mount('/mip-login-app/api/userinfo.json', async ctx => {
 }));
 
 // 登录接口
-app.use(mount('/mip-login-app/api/login.json', async ctx => {
+app.use(mount('/api/login.json', async ctx => {
     const {username, password} = ctx.query;
 
     if (!username || !password) {
@@ -221,7 +221,7 @@ app.use(mount('/mip-login-app/api/login.json', async ctx => {
 }));
 
 // 退出
-app.use(mount('/mip-login-app/api/exit.json', async ctx => {
+app.use(mount('/api/exit.json', async ctx => {
     ctx.session.user = null;
 
     ctx.jsonp({
@@ -230,5 +230,5 @@ app.use(mount('/mip-login-app/api/exit.json', async ctx => {
 }));
 
 // 静态代理
-app.use(mount('/mip-login-app/', serve(__dirname)));
+app.use(mount('/', serve(__dirname)));
 app.listen(3000);
